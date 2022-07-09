@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+</head>
+<body>
+    <!--
+        Template to use for rich media
+    -->
+    <div id="hc_richmedia">
+		
+		<link rel="stylesheet" type="text/css" href="css/44681.css" media="screen" /> <!-- flexslider -->
+        <style type="text/css">
+			body {
+				margin: 0;
+			}
+            .hc_tabs_button .table-cell {
+                /*float: left;*/
+                list-style-type: none;
+                border-right: 2px solid white;
+				border-bottom: 1px solid #797d86;
+            }
+            .hc_tabs_button .table-cell:last-child {
+                border-right: none;
+            }
+            .hc_tabs_button .table-cell a {
+                display: block;
+                text-transform: uppercase;
+                text-align: center;
+                text-decoration: none;
+                color: white;
+                font-size: .8em;
+                padding: 1.5em .5em;
+                white-space: nowrap;
+            }
+            .hc_tabs_button .hc_tabs_button_features { width: 33%; }
+            .hc_tabs_button .hc_tabs_button_photos { width: 33%; }
+            .hc_tabs_button .hc_tabs_button_videos { width: 33%;  }
+            .hc_tabs_button .hc_tabs_button_features.active { background-color: black; }
+            .hc_tabs_button .hc_tabs_button_photos.active { background-color: black; }
+            .hc_tabs_button .hc_tabs_button_videos.active { background-color: black;  }
+
+            #hc_videos, #hc_features {
+                display: none;
+            }
+            #hc_features, #hc_videos, #hc_photos {
+                color: white;
+            }
+            .hc_wrapper {
+                width: 100%;
+                height: auto;
+            }
+            .table { display: table; }
+            .table-row { display: table-row; }
+            .table-cell {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            #hc_richmedia .hc_expand {
+                background: transparent url('images/45002.png') no-repeat;
+                width: 320px;
+                height: 50px;
+                display: block;
+                margin: 0 auto;
+            }
+            #hc_richmedia .hc_closebtn {
+                position:absolute;
+                top: .5em;
+				right: .5em;
+                z-index:2;
+                cursor:pointer;
+                display: block;
+                height: 15px;
+                width: 4%;
+            }
+            #hc_richmedia .hc_closebtn img {
+                position:relative;
+                z-index:20;
+				width: 100%;
+            }
+            #hc_richmedia .hc_content {
+                position:relative;
+                width:100%;
+				max-width: 650px;
+                /*height:auto;*/
+                text-align:center;
+                z-index:1;
+                overflow: hidden;
+                background-color: #515855;
+                margin: 0 auto;
+            }
+            #hc_richmedia .hc_header { display: block;  }
+			
+			/**CUSTOM**/
+			
+			@font-face {
+				font-family: 'tradegothiclt-light';  
+				/*src: url('fonts/2C0340_0_0.eot');*/
+				src: url('fonts/2C0340_0_0.eot');
+				src: url('fonts/2C0340_0_0.eot?#iefix') format('embedded-opentype'),
+					 url('fonts/2C0340_0_0.woff') format('woff'),
+					 url('fonts/2C0340_0_0.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+    		}
+            
+            .hc_initial_view {
+                text-align: center;
+            }
+			
+			.hc_header img {
+				width: 100%;
+				max-width: 650px;
+				display: block;
+			}
+			
+			/*.hc_feature {
+				width: 100%;
+				top: 0;
+				left: 0;
+				display: block;
+			}*/
+			#hc_featurebox, #hc_videobox, #hc_photobox {
+				display: none;
+			}
+			#hc_featurebox.active, #hc_videobox.active, #hc_photobox.active {
+				display: block;
+			}
+			#hc_exterior {
+				display: none;
+			}
+			.hc_featureImg {
+				width: 100%;
+				display: block;
+			}
+			.hc_tabs_button {
+				font-family: 'tradegothiclt-light', arial;
+				font-weight: bold;
+				font-style: italic;
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+				border-top: 2px solid white;
+				display: table;
+			}
+			
+			.hc_tabs_content {
+				position: absolute;
+				bottom: 0;
+			}
+			.hc_divider {
+				position: absolute;
+				width: 100%;
+				z-index: 20;
+				margin-top: -1.7%;
+			}
+			.hc_hotspots {
+				position: absolute;
+				z-index: 2;
+				-moz-border-radius: 50%; 
+    			-webkit-border-radius: 50%; 
+    			border-radius: 50%;
+				border: 3px solid white;
+				width: 11%;
+				height: 10%;
+			}
+			.hc_hotspots a {
+				display: inline-block;
+				width: 100%;
+				height: 100%;
+				background: transparent url("images/44670.png") no-repeat 50%;
+				background-size: 40%;
+				-moz-border-radius: 50%; 
+    			-webkit-border-radius: 50%; 
+    			border-radius: 50%;
+				z-index: 2;
+			}
+			.hc_hotspots a:hover, hc_hotspots.active a {
+				background: rgba(0, 0, 0, 0.5) url("images/44670.png") no-repeat 50%;
+				background-size: 40%;
+			}
+			#hc_hotspot_displays {
+				left: 20%;
+				top: 30%;
+			}
+			#hc_hotspot_touchscreen {
+				right: 25%;
+				top: 35%;
+			}
+			#hc_hotspot_space {
+				top: 60%;
+				left: 50%;
+			}
+			#hc_hotspot_shifter {
+				right: 15%;
+				bottom: 25%;
+			}
+			#hc_hotspot_hood {
+				top: 40%;
+				left: 30%;
+			}
+			#hc_hotspot_stripes {
+				right: 20%;
+				top: 40%;
+			}
+			#hc_hotspot_performance {
+				top: 50%;
+				left: 40%;
+			}
+			#hc_hotspot_heritage {
+				left: 10%;
+				bottom: 30%;
+			}
+			#hc_hotspot_lights {
+				right: 35%;
+				bottom: 25%;
+			}
+			.hc_hotexpand {
+				position: absolute;
+				display: none;
+				height: 100%;
+				overflow: hidden;
+				background-color: #efeeec;
+			}
+			.hc_hotexpand img {
+				width: 100%;
+				display: block;
+			}
+			.hc_hotexpand.active {
+				display: block;
+				z-index: 12;
+			}
+			.hc_closepop {
+				position: absolute;
+				background-color: #d0ccc7;
+				right: 0;
+				width: 3%;
+				padding: .5em .8em;
+				cursor: pointer;
+				z-index: 3;
+			}
+			.hc_closepop img {
+				width: 100%;
+				display: block;
+			}
+			.hc_hotexpand_content {
+				text-align: left;
+				font-family: 'tradegothiclt-light', arial;
+				position: absolute;
+				z-index: 5;
+				top: 70%;
+				margin: 0 2em 0 1em;
+				height: 100%;
+			}
+			.hc_hotexpand_content h1 {
+				-webkit-margin-before: .7em;
+				-webkit-margin-after: 0em;
+				text-transform: uppercase;
+				font-weight: bold;
+				font-style: italic;
+				font-size: 120%;
+			}
+			.hc_hotexpand_content p {
+				font-family: arial;
+				-webkit-margin-before: .3em;
+			}
+			.hc_thumbs {
+				display: none;
+			}
+			.hc_thumbs img {
+				width: 100%;
+				display: block;
+			}
+			/*social*/
+			.hc_social {
+				display: table;
+				position: absolute;
+				margin-top: -12%;
+				width: 100%;
+			}
+			.hc_icons, .hc_byo {
+				display: table-cell;
+			}
+			.hc_byo {
+				float: right;
+				width: 50%;
+				padding-right: 2%;
+			}
+			.hc_icons {
+				text-align: left;
+				width: 35%;
+				padding-left: 2%;
+			}
+			.hc_icons img {
+				max-width: 70px;
+				display: inline-block;
+			}	
+			.hc_byo img {
+				max-width: 200px;
+			}
+			.hc_twitter, .hc_facebook, .hc_gplus {
+				display: table-cell;
+				width: 30%;
+				padding-right: 5%;
+			}
+			.hc_twitter img, .hc_facebook img, .hc_gplus img {
+				width: 100%;
+			}
+			/*slider*/
+			/*photo gallery*/
+			#hc_slider_interior {
+				background-color: #efeeec;
+				display: none;
+			}
+			.flexslider {
+				margin: 0;
+				border: none;
+				background: transparent;
+				border-radius: 0;
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+				-o-border-radius: 0;
+				webkit-box-shadow: none;
+				-moz-box-shadow: none;
+				-o-box-shadow: none;
+				box-shadow: none;
+			}
+			.flex-direction-nav a {
+				background: rgba(0,0,0,.5) url("images/44626.png") no-repeat 50%;
+				height: 50px;
+			}
+			.flex-direction-nav .flex-next {
+				right: 0;
+			}
+			.flex-direction-nav .flex-prev {
+				background: rgba(0,0,0,.5) url("images/44627.png") no-repeat 50%;
+				left: 0;
+			}
+			.flex-direction-nav a:before {
+				content: '';
+			}
+			.flex-direction-nav a.flex-next:before {
+				content: '';
+			}
+			#carousel {
+				background-color: black;
+			}
+			#carousel li {
+				cursor: pointer;
+			}
+			#hc_featurebox .flex-direction-nav a {
+				top: 36%;
+			}
+			/*interior*/
+			.hc_switch {
+				font-family: 'tradegothiclt-light', arial;
+				font-size: 80%;
+				color: white;
+				position: absolute;
+				z-index: 5;
+				right: 0;
+				background-color: rgba(0, 0, 0, 0.7);
+				padding: 1em 1.5em;
+				font-style: italic;
+				cursor: pointer;
+			}
+			/*video*/
+			#hc_videobox .hc_tabs_button { position: relative; }
+			.videoWrap {
+			}
+			.videofeature img {
+				width: 100%;
+				display: block;
+			}
+			#vidWrapper {
+				position: relative;
+			}
+			#vidWrapper img {
+				width: 100%;
+			}
+			#ytplayer {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			#hc_imgShim {
+                  width: 100%; 
+                  margin-bottom: -4px; 
+                  visibility: hidden;	
+              }
+              .hc_jumpWrap {
+                  position: absolute; 
+                  bottom: 0; 
+                  width: 100%;
+              }
+              .hc_jumpWrapInner {
+                  position: relative; 
+                  width: 100%;
+              }
+              #vidWrapper { margin-bottom: 5%; }
+              #hc_videobox .hc_tabs_button { position: relative; }
+              #hc_imgShim {
+                  width: 100%; 
+                  margin-bottom: -4px; 
+                  visibility: hidden;	
+              }
+              .hc_jumpWrap {
+                  position: absolute; 
+                  bottom: 0; 
+                  width: 100%;
+              }
+              .hc_jumpWrapInner {
+                  position: relative; 
+                  width: 100%;
+              }
+              #vidWrapper { margin-bottom: 5%; }
+              #hc_videobox .hc_tabs_button { position: relative; }
+			
+			@media screen and (max-width: 500px) {
+				.hc_switch {
+					padding: .5em 1em;
+				}
+				.hc_hotexpand_content h1 {
+					font-size: 90%;
+					-webkit-margin-before: 0;
+				}
+				.hc_hotexpand_content p {
+					font-size: 80%;
+				}
+				#carousel .flex-direction-nav a {
+					height: 30px;
+					width: 25px;
+					background-size: 40%;
+				}
+			}
+			@media screen and (max-width: 400px) {
+				.hc_hotexpand_content p {
+					font-size: 70%;
+				}   
+				#hc_photobox .flex-direction-nav a, #hc_featurebox .flex-direction-nav a {
+					height: 35px;
+					width: 25px;
+					background-size: 40%;
+				}
+			}
+			@media screen and (max-width: 350px) {
+				.hc_switch {
+					font-size: 75%;
+				}
+				.hc_hotexpand_content h1 {
+					font-size: 70%;
+				}
+				.hc_hotexpand_content p {
+					font-size: 65%;
+					line-height: 1em;
+				}
+			}
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+		<script src="scripts/44625.js"></script>
+		<!--<script src="scripts/hc_framework-0.2.js"></script>-->
+        <script src="scripts/framework.js"></script>
+		<!--<script src="scripts/hc_framework.js"></script>-->
+		<script type="text/javascript">
+			"use strict";
+			var hc_ = new hc_({
+				"prod" : false,
+    			"clientId" : "1047",
+    			"targetUrl" : "",
+    			"publisherId" : "%p%",
+    			"augmeId" : "%augmeid%",
+    			"adId" : "%ad_id%",
+    			"campaignId" : "%c%",
+				"track" : ""
+			});
+			
+			 /*3rd party impression tracking*/
+    		/*var i = new Image();
+    		i.src = 'http://ad.doubleclick.net/ad/N6092.285074.HIPCRICKET/B8231457.110677444;sz=1x1;ord='+new Date().getTime();*/
+			
+			hc_.events.hc_expand_after = function () {
+				console.log('hi');
+                hc_.test1('asdf');
+				var hW = hc_$(".hc_header").width();
+				hc_$(".hc_hotexpand_content").css("width", (hW-40) + "px");
+				
+				hc_$( window ).resize(function() {
+					hW = hc_$(".hc_header").width();
+					hc_$(".hc_hotexpand_content").css("width", (hW-40) + "px");
+				});
+
+				/* Tagging hotspots */
+  				hc_$(".hc_hotspots").on("click tap", function() {
+					var hotspot = hc_$(this).prop("id").replace('hc_hotspot_', '');
+					if (hc_$(this).hasClass('interior')) {
+						/*hc_.trackGeneralClickEvent('navigation', 'features', 'interior', hotspot);*/
+					} else {
+						/*hc_.trackGeneralClickEvent('navigation', 'features', 'exterior', hotspot);*/
+					}
+				});
+
+				hc_$("#hc_switch_interior").on("click tap", function () {
+					/*hc_.trackGeneralClickEvent('navigation', 'features', 'exterior');*/
+					hc_$("#hc_exterior").show();
+					hc_$("#hc_interior").hide();
+					hc_$("#hc_headswap").attr("src", "images/44684.jpg");
+				});
+				hc_$("#hc_switch_exterior").on("click tap", function () {
+					/*hc_.trackGeneralClickEvent('navigation', 'features', 'interior');*/
+					hc_$("#hc_interior").show();
+					hc_$("#hc_exterior").hide();
+					hc_$("#hc_headswap").attr("src", "images/44651.jpg");
+				});
+
+
+				var hc_hotspot_displays = null;
+				hc_$("#hc_hotspot_displays").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_interior").hide();
+					hc_$("#hc_slider_interior").show();
+					hc_$("#hc_slider_displays").show();
+
+					if (hc_hotspot_displays) {
+						hc_hotspot_displays.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_displays').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_displays = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_touchscreen, #hc_slider_space, #hc_slider_shifter").hide();
+				});
+
+				var hc_hotspot_touchscreen = null;
+				hc_$("#hc_hotspot_touchscreen").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_interior").hide();
+					hc_$("#hc_slider_interior").show();
+					hc_$("#hc_slider_touchscreen").show();
+
+					if (hc_hotspot_touchscreen) {
+						hc_hotspot_touchscreen.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_touchscreen').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_touchscreen = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_displays, #hc_slider_space, #hc_slider_shifter").hide();
+				});
+
+				var hc_hotspot_space = null;
+				hc_$("#hc_hotspot_space").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_interior").hide();
+					hc_$("#hc_slider_interior").show();
+					hc_$("#hc_slider_space").show();
+
+					if (hc_hotspot_space) {
+						hc_hotspot_space.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_space').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_space = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_touchscreen, #hc_slider_displays, #hc_slider_shifter").hide();
+				});
+
+				var hc_hotspot_shifter = null;
+				hc_$("#hc_hotspot_shifter").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_interior").hide();
+					hc_$("#hc_slider_interior").show();
+					hc_$("#hc_slider_shifter").show();
+
+					if (hc_hotspot_shifter) {
+						hc_hotspot_shifter.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_shifter').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_shifter = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'interior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_touchscreen, #hc_slider_displays, #hc_slider_space").hide();
+				});
+
+				var hc_hotspot_hood = null;
+				hc_$("#hc_hotspot_hood").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_exterior").hide();
+					hc_$("#hc_slider_exterior").show();
+					hc_$("#hc_slider_hood").show();
+
+					if (hc_hotspot_hood) {
+						hc_hotspot_hood.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_hood').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_hood = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_stripes, #hc_slider_performance, #hc_slider_heritage, #hc_slider_lights").hide();
+				});
+
+				var hc_hotspot_stripes = null;
+				hc_$("#hc_hotspot_stripes").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_exterior").hide();
+					hc_$("#hc_slider_exterior").show();
+					hc_$("#hc_slider_stripes").show();
+
+					if (hc_hotspot_stripes) {
+						hc_hotspot_stripes.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_stripes').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_stripes = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_hood, #hc_slider_performance, #hc_slider_heritage, #hc_slider_lights").hide();
+				});
+
+				var hc_hotspot_performance = null;
+				hc_$("#hc_hotspot_performance").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_exterior").hide();
+					hc_$("#hc_slider_exterior").show();
+					hc_$("#hc_slider_performance").show();
+
+					if (hc_hotspot_performance) {
+						hc_hotspot_performance.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_performance').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_performance = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_stripes, #hc_slider_hood, #hc_slider_heritage, #hc_slider_lights").hide();
+				});
+
+				var hc_hotspot_heritage = null;
+				hc_$("#hc_hotspot_heritage").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_exterior").hide();
+					hc_$("#hc_slider_exterior").show();
+					hc_$("#hc_slider_heritage").show();
+
+					if (hc_hotspot_heritage) {
+						hc_hotspot_heritage.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_heritage').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_heritage = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_stripes, #hc_slider_hood, #hc_slider_lights, #hc_slider_performance").hide();
+				});
+
+				var hc_hotspot_lights = null;
+				hc_$("#hc_hotspot_lights").on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_exterior").hide();
+					hc_$("#hc_slider_exterior").show();
+					hc_$("#hc_slider_lights").show();
+
+					if (hc_hotspot_lights) {
+						hc_hotspot_lights.flexAnimate(0);
+					} else {
+						hc_$('#hc_slider_lights').flexslider({
+							animation: "slide",
+							controlNav: true,
+							animationLoop: true,
+							slideshow: false,
+							prevText: "",
+							nextText: "",
+							start: function(slider){
+								hc_hotspot_lights = slider;
+							},
+							before: function(slider) {
+								if (((slider.currentSlide < slider.animatingTo) && (slider.animatingTo - slider.currentSlide != 3)) || ((slider.currentSlide > slider.animatingTo) && (slider.currentSlide - slider.animatingTo == 3))) {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'right');*/
+								} else {
+									/*hc_.trackGeneralClickEvent('slider', 'features', 'exterior', 'hotspot', 'left');*/
+								}
+							}
+						});
+					}
+					hc_$("#hc_slider_stripes, #hc_slider_hood, #hc_slider_performance, #hc_slider_heritage").hide();
+				});
+				hc_$(".hc_closepop.interior").on("click tap", function () {
+					/*hc_.trackGeneralClickEvent('navigation', 'features', 'interior', 'hotspot', 'close');*/
+					hc_$("#hc_interior").show();
+					hc_$("#hc_slider_interior").hide();
+				});
+				hc_$(".hc_closepop.exterior").on("click tap", function () {
+					/*hc_.trackGeneralClickEvent('navigation', 'features', 'exterior', 'hotspot', 'close');*/
+					hc_$("#hc_exterior").show();
+					hc_$("#hc_slider_exterior").hide();
+				});
+				hc_$('.hc_view_video').on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_headswap").attr("src", "images/44653.jpg");
+					hc_$("#hc_featurebox, #hc_photobox").removeClass("active");
+					hc_$("#hc_videobox").addClass("active");
+					hc_$(".hc_tabs_button_videos").addClass("active");
+					hc_$(".hc_tabs_button_features, .hc_tabs_button_photos").removeClass("active");
+					
+				});
+				hc_$('.hc_view_features').on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_headswap").attr("src", "images/44652.jpg");
+					hc_$("#hc_videobox, #hc_photobox").removeClass("active");
+					hc_$("#hc_featurebox").addClass("active");
+					var tmpW = hc_$(".hc_header").width();
+					hc_$("#boxslider > li").css("width", tmpW + "px");
+					console.log(tmpW);
+					hc_$(".bx-viewport").css("height", "auto");
+					hc_$(".hc_tabs_button_features").addClass("active");
+					hc_$(".hc_tabs_button_videos, .hc_tabs_button_photos").removeClass("active");
+				});
+				hc_$('.hc_view_photos').on("click tap", function () {
+					console.log("clicked");
+					hc_$("#hc_headswap").attr("src", "images/44652.jpg");
+					var carW = 180;
+					var slideW = hc_$(".hc_header").width();
+					//console.log(slideW);
+					carW = parseInt((-(180 * slideW)) / (-650)) + 0;
+					hc_$("#hc_videobox, #hc_featurebox").removeClass("active");
+					hc_$("#hc_photobox").addClass("active");
+					console.log(carW);
+					hc_$('#carousel').flexslider({
+						animation: "slide",
+						controlNav: false,
+						animationLoop: false,
+						slideshow: false,
+						itemWidth: carW,
+						itemMargin: 5,
+						asNavFor: '#slider2',
+						prevText: "",
+						nextText: "",
+						before: function(slider) {
+							console.log(slider);
+						}
+  					});
+					hc_$('#slider2').flexslider({
+						animation: "slide",
+						controlNav: true,
+						animationLoop: false,
+						slideshow: false,
+						sync: "#carousel",
+						prevText: "",
+						nextText: "",
+						before: function(slider) {
+							if (slider.currentSlide < slider.animatingTo) {
+								/*hc_.trackGeneralClickEvent('slider', 'photo_gallery', 'right');*/
+							} else {
+								/*hc_.trackGeneralClickEvent('slider', 'photo_gallery', 'left');*/
+							}
+						}
+  					});
+					var tmpW = hc_$(".hc_header").width();
+					hc_$(".hc_tabs_button_photos").addClass("active");
+					hc_$(".hc_tabs_button_videos, .hc_tabs_button_features").removeClass("active");
+				});
+			};
+			hc_$(function () {
+				
+			});
+			
+		</script>
+        <!--<script type="text/javascript" src="mraid.js"></script>-->
+		
+        
+
+
+        <div class="hc_initial_view">
+            <a href="#" class="hc_expand"></a>
+        </div>
+        <div class="hc_content" id="hc_content" style="display:none;">
+            <div class="hc_closebtn" style="display:none;"><img src="images/44629.png"/></div>
+          	<div class="hc_header">
+                <a href="">
+                    <img id="hc_headswap" src="images/44651.jpg" />
+                </a>
+				<div class="hc_social">
+					<div class="hc_icons">
+						<div class="hc_twitter"><a href="https://twitter.com/Dodge" target="_blank"><img src="images/44666.png"/></a></div>
+						<div class="hc_facebook"><a href="https://www.facebook.com/DodgeChallenger" target="_blank"><img src="images/44656.png"/></a></div>
+						<div class="hc_gplus"><a href="https://plus.google.com/+Dodge/" target="_blank"><img src="images/44657.png"/></a></div>
+					</div>
+					<div class="hc_byo"><a href="http://m.dodge.com/en/mobile/vehicles/2015/challenger/?bid=8231457&sid=1674628&pid=110677444&adid=284427277&cid=0&buytype=LF&TR=1&channel=display" target="_blank"><img src="images/44628.png"/></a></div>
+				</div>
+				<div class="hc_divider"><img src="images/44661.png"/></div>
+            </div>
+            <div class="hc_wrapper">
+				
+				<div id="hc_featurebox" class="active">
+					<div id="hc_interior">
+						
+						<div id="hc_switch_interior" class="hc_switch">EXTERIOR</div>
+						<div id="hc_hotspot_displays" class="hc_hotspots interior"><a href="#"></a></div>
+						<div id="hc_hotspot_touchscreen" class="hc_hotspots interior"><a href="#"></a></div>
+						<div id="hc_hotspot_space" class="hc_hotspots interior"><a href="#"></a></div>
+						<div id="hc_hotspot_shifter" class="hc_hotspots interior"><a href="#"></a></div>
+						<img class="hc_featureImg" src="images/44667.jpg"/>
+						<!--<div class="hc_tabs_content hc_tabs_content_features">a</div>
+						<div class="hc_tabs_content hc_tabs_content_photos">b</div>
+						<div class="hc_tabs_content hc_tabs_content_videos">c</div>-->
+						<div class="hc_tabs_button">
+							<div class="table-cell hc_tabs_button_features active"><a class="hc_view_features" href="#">FEATURES</a></div>
+							<div class="table-cell hc_tabs_button_photos"><a class="hc_view_photos" href="#">PHOTO GALLERY</a></div>
+							<div class="table-cell hc_tabs_button_videos"><a class="hc_view_video" href="#">VIEW VIDEO</a></div>
+					</div> 
+				</div>
+				<div id="hc_slider_interior">
+					<div class="hc_closepop interior"><img src="images/44630.png"/></div>
+					<div id="hc_slider_displays" class="flexslider">
+							  <ul class="slides">
+								<li>	
+									<img src="images/44660.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Information Displays</h1>
+										<p>The new class-exclusive 7-inch reconfigurable digital cluster provides vehicle information displays that show 0-60 time, reaction time, g-force meter and turn-by-turn navigation.</p>
+									</div>
+								</li>
+								<li>
+								  	<img src="images/44675.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>8.4-inch UConnect<sup>&reg;</sup>touchscreen</h1>
+										<p>View 3-D navigation guidance and adjust the performance of the engine, transmission, steering response and traction control from the new class-exclusive available 8.4-inch Uconnect<sup>&reg;</sup> Touchscreen.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44674.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Space to Share</h1>
+										<p>With Best-in-Class interior volume and cargo volume, bring a friend. Or four. It's the only vehicle in its class with 5-passenger seating.</p>
+									</div>
+								</li>
+								<li>
+								  	<img src="images/44673.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Electronic Sport Shifter</h1>
+										<p>Electronic sport shifter is paired to the new class-exclusive TorqueFlite<sup>&reg;</sup> 8-speed automatic transmission with AutoStick. Choose the 6-speed manual transmission to shift the gears yourself.</p>
+									</div>
+								</li>
+								<!-- items mirrored twice, total of 12 -->
+							  </ul>
+					</div>
+					<div id="hc_slider_touchscreen" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  <img src="images/44675.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>8.4-inch UConnect<sup>&reg;</sup>touchscreen</h1>
+										<p>View 3-D navigation guidance and adjust the performance of the engine, transmission, steering response and traction control from the new class-exclusive available 8.4-inch Uconnect<sup>&reg;</sup> Touchscreen.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44674.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Space to Share</h1>
+										<p>With Best-in-Class interior volume and cargo volume, bring a friend. Or four. It's the only vehicle in its class with 5-passenger seating.</p>
+									</div>
+								</li>
+								<li>
+									<img src="images/44673.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Electronic Sport Shifter</h1>
+										<p>Electronic sport shifter is paired to the new class-exclusive TorqueFlite<sup>&reg;</sup> 8-speed automatic transmission with AutoStick. Choose the 6-speed manual transmission to shift the gears yourself.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44660.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Information Displays</h1>
+										<p>The new class-exclusive 7-inch reconfigurable digital cluster provides vehicle information displays that show 0-60 time, reaction time, g-force meter and turn-by-turn navigation.</p>
+									</div>
+								</li>
+							  </ul>
+					</div>
+					<div id="hc_slider_space" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  	<img src="images/44674.jpg"/>
+									<div class="hc_hotexpand_content">
+										<h1>Space to Share</h1>
+										<p>With Best-in-Class interior volume and cargo volume, bring a friend. Or four. It's the only vehicle in its class with 5-passenger seating.</p>
+									</div>
+								</li>
+								<li>
+									<img src="images/44673.jpg" />
+								 	<div class="hc_hotexpand_content">
+										<h1>Electronic Sport Shifter</h1>
+										<p>Electronic sport shifter is paired to the new class-exclusive TorqueFlite<sup>&reg;</sup> 8-speed automatic transmission with AutoStick. Choose the 6-speed manual transmission to shift the gears yourself.</p>
+									</div>
+								</li>
+								  <li>
+								  <img src="images/44660.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Information Displays</h1>
+										<p>The new class-exclusive 7-inch reconfigurable digital cluster provides vehicle information displays that show 0-60 time, reaction time, g-force meter and turn-by-turn navigation.</p>
+									</div>
+								</li>
+								  <li>
+								  	<img src="images/44675.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>8.4-inch UConnect<sup>&reg;</sup>touchscreen</h1>
+										<p>View 3-D navigation guidance and adjust the performance of the engine, transmission, steering response and traction control from the new class-exclusive available 8.4-inch Uconnect<sup>&reg;</sup> Touchscreen.</p>
+									</div>
+								</li>
+							  </ul>
+						</div>
+					<div id="hc_slider_shifter" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  <img src="images/44673.jpg" />
+								 	<div class="hc_hotexpand_content">
+										<h1>Electronic Sport Shifter</h1>
+										<p>Electronic sport shifter is paired to the new class-exclusive TorqueFlite<sup>&reg;</sup> 8-speed automatic transmission with AutoStick. Choose the 6-speed manual transmission to shift the gears yourself.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44660.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Information Displays</h1>
+										<p>The new class-exclusive 7-inch reconfigurable digital cluster provides vehicle information displays that show 0-60 time, reaction time, g-force meter and turn-by-turn navigation.</p>
+									</div>
+								</li>
+								  <li>
+								  	<img src="images/44675.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>8.4-inch UConnect<sup>&reg;</sup>touchscreen</h1>
+										<p>View 3-D navigation guidance and adjust the performance of the engine, transmission, steering response and traction control from the new class-exclusive available 8.4-inch Uconnect<sup>&reg;</sup> Touchscreen.</p>
+									</div>
+								  </li>
+								  <li>
+								  	<img src="images/44674.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Space to Share</h1>
+										<p>With Best-in-Class interior volume and cargo volume, bring a friend. Or four. It's the only vehicle in its class with 5-passenger seating.</p>
+									</div>
+								</li>
+							  </ul>
+						</div>
+						
+				</div>
+				<div id="hc_exterior">
+					<div id="hc_switch_exterior" class="hc_switch">&nbsp;INTERIOR</div>
+					<div id="hc_hotspot_hood" class="hc_hotspots exterior"><a href="#"></a></div>
+					<div id="hc_hotspot_stripes" class="hc_hotspots exterior"><a href="#"></a></div>
+					<div id="hc_hotspot_performance" class="hc_hotspots exterior"><a href="#"></a></div>
+					<div id="hc_hotspot_heritage" class="hc_hotspots exterior"><a href="#"></a></div>
+					<div id="hc_hotspot_lights" class="hc_hotspots exterior"><a href="#"></a></div>
+					
+					<img class="hc_featureImg" src="images/44663.jpg"/>
+					<!--<div class="hc_tabs_content hc_tabs_content_features">a</div>
+					<div class="hc_tabs_content hc_tabs_content_photos">b</div>
+					<div class="hc_tabs_content hc_tabs_content_videos">c</div>-->
+					<div class="hc_tabs_button">
+                    	<div class="table-cell hc_tabs_button_features active"><a class="hc_view_features" href="#">FEATURES</a></div>
+                    	<div class="table-cell hc_tabs_button_photos"><a class="hc_view_photos" href="#">PHOTO GALLERY</a></div>
+                    	<div class="table-cell hc_tabs_button_videos"><a class="hc_view_video" href="#">VIEW VIDEO</a></div>
+                </div>
+				</div>
+				<div id="hc_slider_exterior">
+					<div class="hc_closepop exterior"><img src="images/44630.png"/></div>
+					<div id="hc_slider_hood" class="flexslider">
+							  <ul class="slides">
+								<li>	
+									<img src="images/44679.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Unique Functional Hood</h1>
+							<p>Flex more muscle with a larger, more intimidating power bulge hood or an available classic SHAKER* hood with high-flow cold air induction.<br/>*392 HEMI&reg; Scat Pack SHAKER shown. SHAKER models available early 2015</p>
+									</div>
+								</li>
+								<li>
+								  	<img src="images/44671.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Show Your Pride</h1>
+							<p>Seven available heritage stripes including new Scat Pack Bumblebee stripes, R/T hood stripe and side stripes.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44669.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Performance</h1>
+							<p>Three paths to relentless power: a 305-horsepower 3.6L Pentastar<sup>&reg;</sup> V6 engine, the available 375-horsepower 5.7L HEMI<sup>&reg;</sup> V8 engine or the 6.4L HEMI<sup>&reg;</sup> V8 engine with an estimated 485 horsepower.</p>
+									</div>
+								</li>
+								 <li>
+								  	<img src="images/44678.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Heritage Styling</h1>
+							<p>The iconic heritage-inspired split grille surround and aggressive brow designs are back with attitude.</p>
+									</div>
+								</li>
+								<li>
+								  	<img src="images/44668.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Light 'Em Up</h1>
+							<p>New projector headlamps with quad LED halo surrounds and available projector fog lamps light up the night.</p>
+									</div>
+								</li>
+								<!-- items mirrored twice, total of 12 -->
+							  </ul>
+					</div>
+					<div id="hc_slider_stripes" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  <img src="images/44671.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>Show Your Pride</h1>
+							<p>Seven available heritage stripes including new Scat Pack Bumblebee stripes, R/T hood stripe and side stripes.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44669.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Performance</h1>
+							<p>Three paths to relentless power: a 305-horsepower 3.6L Pentastar<sup>&reg;</sup> V6 engine, the available 375-horsepower 5.7L HEMI<sup>&reg;</sup> V8 engine or the 6.4L HEMI<sup>&reg;</sup> V8 engine with an estimated 485 horsepower.</p>
+									</div>
+								</li>
+								<li>
+									<img src="images/44678.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Heritage Styling</h1>
+							<p>The iconic heritage-inspired split grille surround and aggressive brow designs are back with attitude.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44668.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Light 'Em Up</h1>
+							<p>New projector headlamps with quad LED halo surrounds and available projector fog lamps light up the night.</p>
+									</div>
+								</li>
+								 <li>
+								  <img src="images/44679.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Unique Functional Hood</h1>
+							<p>Flex more muscle with a larger, more intimidating power bulge hood or an available classic SHAKER* hood with high-flow cold air induction.<br/>*392 HEMI&reg; Scat Pack SHAKER shown. SHAKER models available early 2015</p>
+									</div>
+								</li>
+							  </ul>
+					</div>
+					<div id="hc_slider_performance" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  	<img src="images/44669.jpg"/>
+									<div class="hc_hotexpand_content">
+										<h1>Performance</h1>
+							<p>Three paths to relentless power: a 305-horsepower 3.6L Pentastar<sup>&reg;</sup> V6 engine, the available 375-horsepower 5.7L HEMI<sup>&reg;</sup> V8 engine or the 6.4L HEMI<sup>&reg;</sup> V8 engine with an estimated 485 horsepower.</p>
+									</div>
+								</li>
+								<li>
+									<img src="images/44678.jpg" />
+								 	<div class="hc_hotexpand_content">
+										<h1>Heritage Styling</h1>
+							<p>The iconic heritage-inspired split grille surround and aggressive brow designs are back with attitude.</p>
+									</div>
+								</li>
+								  <li>
+								  <img src="images/44668.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Light 'Em Up</h1>
+							<p>New projector headlamps with quad LED halo surrounds and available projector fog lamps light up the night.</p>
+									</div>
+								</li>
+								  <li>
+								  	<img src="images/44679.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>Unique Functional Hood</h1>
+							<p>Flex more muscle with a larger, more intimidating power bulge hood or an available classic SHAKER* hood with high-flow cold air induction.<br/>*392 HEMI&reg; Scat Pack SHAKER shown. SHAKER models available early 2015</p>
+									</div>
+								</li>
+								 <li>
+								  	<img src="images/44671.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>Show Your Pride</h1>
+							<p>Seven available heritage stripes including new Scat Pack Bumblebee stripes, R/T hood stripe and side stripes.</p>
+									</div>
+								</li>
+							  </ul>
+						</div>
+					<div id="hc_slider_heritage" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  <img src="images/44678.jpg" />
+								 	<div class="hc_hotexpand_content">
+										<h1>Heritage Styling</h1>
+							<p>The iconic heritage-inspired split grille surround and aggressive brow designs are back with attitude.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44668.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Light 'Em Up</h1>
+							<p>New projector headlamps with quad LED halo surrounds and available projector fog lamps light up the night.</p>
+									</div>
+								</li>
+								  <li>
+								  	<img src="images/44679.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>Unique Functional Hood</h1>
+							<p>Flex more muscle with a larger, more intimidating power bulge hood or an available classic SHAKER* hood with high-flow cold air induction.<br/>*392 HEMI&reg; Scat Pack SHAKER shown. SHAKER models available early 2015</p>
+									</div>
+								  </li>
+								  <li>
+								  	<img src="images/44671.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Show Your Pride</h1>
+							<p>Seven available heritage stripes including new Scat Pack Bumblebee stripes, R/T hood stripe and side stripes.</p>
+									</div>
+								</li>
+								 <li>
+								  	<img src="images/44669.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Performance</h1>
+							<p>Three paths to relentless power: a 305-horsepower 3.6L Pentastar<sup>&reg;</sup> V6 engine, the available 375-horsepower 5.7L HEMI<sup>&reg;</sup> V8 engine or the 6.4L HEMI<sup>&reg;</sup> V8 engine with an estimated 485 horsepower.</p>
+									</div>
+								</li>
+							  </ul>
+						</div>
+						<div id="hc_slider_lights" class="flexslider">
+							  <ul class="slides">
+								<li>
+								  <img src="images/44668.jpg" />
+								 	<div class="hc_hotexpand_content">
+										<h1>Light 'Em Up</h1>
+							<p>New projector headlamps with quad LED halo surrounds and available projector fog lamps light up the night.</p>
+									</div>
+								</li>
+								<li>
+								  <img src="images/44679.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Unique Functional Hood</h1>
+							<p>Flex more muscle with a larger, more intimidating power bulge hood or an available classic SHAKER* hood with high-flow cold air induction.<br/>*392 HEMI&reg; Scat Pack SHAKER shown. SHAKER models available early 2015</p>
+									</div>
+								</li>
+								  <li>
+								  	<img src="images/44671.jpg" />
+								  	<div class="hc_hotexpand_content">
+										<h1>Show Your Pride</h1>
+							<p>Seven available heritage stripes including new Scat Pack Bumblebee stripes, R/T hood stripe and side stripes.</p>
+									</div>
+								  </li>
+								  <li>
+								  	<img src="images/44669.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Performance</h1>
+							<p>Three paths to relentless power: a 305-horsepower 3.6L Pentastar<sup>&reg;</sup> V6 engine, the available 375-horsepower 5.7L HEMI<sup>&reg;</sup> V8 engine or the 6.4L HEMI<sup>&reg;</sup> V8 engine with an estimated 485 horsepower.</p>
+									</div>
+								</li>
+								 <li>
+								  	<img src="images/44678.jpg" />
+									<div class="hc_hotexpand_content">
+										<h1>Heritage Styling</h1>
+							<p>The iconic heritage-inspired split grille surround and aggressive brow designs are back with attitude.</p>
+									</div>
+								</li>
+							  </ul>
+						</div>
+						
+				</div>
+            </div>
+			<div id="hc_photobox" >
+					<div id="carousel" class="flexslider">
+					  <ul class="slides">
+						<li>
+						  <img src="images/44635.jpg" />
+						</li>
+						<li>
+						  <img src="images/44637.jpg" />
+						</li>
+						<li>
+						  <img src="images/44639.jpg" />
+						</li>
+						 <li>
+						  <img src="images/44649.jpg" />
+						</li>
+						<li>
+						  <img src="images/44641.jpg" />
+						</li>
+						<li>
+						  <img src="images/44643.jpg" />
+						</li>
+						 <li>
+						  <img src="images/44645.jpg" />
+						</li>
+						 <li>
+						  <img src="images/44647.jpg" />
+						</li>
+						<!-- items mirrored twice, total of 12 -->
+					  </ul>
+					</div>
+					<div id="slider2" class="flexslider">
+						  <ul class="slides">
+							<li>
+						  		<img src="images/44635.jpg" />
+							</li>
+							<li>
+						  		<img src="images/44637.jpg" />
+							</li>
+							<li>
+						  		<img src="images/44639.jpg" />
+							</li>
+						 	<li>
+						  		<img src="images/44649.jpg" />
+							</li>
+							<li>
+						  		<img src="images/44641.jpg" />
+							</li>
+							<li>
+						  		<img src="images/44643.jpg" />
+							</li>
+						 	<li>
+						  		<img src="images/44645.jpg" />
+							</li>
+						 	<li>
+						  		<img src="images/44647.jpg" />
+							</li>
+						  </ul>
+					</div>
+					
+					<div class="hc_tabs_button">
+                    	<div class="table-cell hc_tabs_button_features active"><a class="hc_view_features" href="#">FEATURES</a></div>
+                    	<div class="table-cell hc_tabs_button_photos"><a class="hc_view_photos" href="#">PHOTO GALLERY</a></div>
+                    	<div class="table-cell hc_tabs_button_videos"><a class="hc_view_video" href="#">VIEW VIDEO</a></div>
+                </div>     
+            </div>			
+			<div id="hc_videobox">
+                <img src="images/44667.jpg" id="hc_imgShim" />
+                <div class="hc_jumpWrap">
+                	<div class="hc_jumpWrapInner">
+                       <div class="videofeature">
+                          <div id="vidWrapper">
+                              <img src="images/44672.png" />
+                              <div id="ytplayer"></div>
+                          </div>
+                       </div>
+                       <div class="hc_tabs_button">
+                          <div class="table-cell hc_tabs_button_features"><a class="hc_view_features" href="#">FEATURES</a></div>
+                          <div class="table-cell hc_tabs_button_photos"><a class="hc_view_photos" href="#">PHOTO GALLERY</a></div>
+                          <div class="table-cell hc_tabs_button_videos"><a id="hc_view_video" href="#">VIEW VIDEO</a></div>
+                       </div>
+                   </div>
+			    </div>
+			</div>
+        
+		</div>
+		<!--<script id="www-widgetapi-script" src="./youtubetest_files/www-widgetapi.js" async=""></script><script src="./youtubetest_files/iframe_api"></script>-->
+		<script>
+			  /* Load the IFrame Player API code asynchronously. */
+
+			  var tag = document.createElement('script');
+			  tag.src = "https://www.youtube.com/iframe_api";
+			  var firstScriptTag = document.getElementsByTagName('script')[0];
+			  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+			  /* Replace the 'ytplayer' element with an <iframe> and YouTube player after the API code downloads. */
+			  var player;
+			  function onYouTubePlayerAPIReady() {
+				player = new YT.Player('ytplayer', {
+				height: '100%',
+				width: '100%',
+				videoId: '5_bjdpDFudo',
+				events: {
+					'onStateChange': onPlayerStateChange
+				}
+				});
+			  }
+				/* Video Tagging */
+			  var timer = false;
+			  var played = false;
+			  var watch = {
+				  first : false,
+				  second : false,
+				  third : false,
+				  ended : false
+			  };
+			  function onPlayerStateChange(event) {
+				  if (event.data == YT.PlayerState.PLAYING) {
+					  if (played) {
+						  /*hc_.trackGeneralClickEvent('video', 'resume');*/
+					  } else {
+						  played = true;
+						  /*hc_.trackGeneralClickEvent('video', 'play');*/
+					  }
+					  timer = setInterval(progress, 1000);
+				  } else {
+					  clearInterval(timer);
+					  if (event.data == YT.PlayerState.ENDED) {
+						  watch.ended = true;
+						  /*hc_.trackGeneralClickEvent('video', 'ended');*/
+					  } else if (event.data == YT.PlayerState.PAUSED) {
+						  /*hc_.trackGeneralClickEvent('video', 'paused');*/
+					  }
+				  }
+			  }
+			  function progress() {
+
+				  var percentage = player.getCurrentTime() /  player.getDuration() * 100;
+				  if (percentage > 25 && watch.first == false) {
+					  watch.first = true;
+					  /*hc_.trackGeneralClickEvent('video', 'firstquartile');*/
+				  }
+				  if (percentage > 50 && watch.second == false) {
+					  watch.second = true;
+					  /*hc_.trackGeneralClickEvent('video', 'half');*/
+				  }
+				  if (percentage > 75 && watch.third == false) {
+					  watch.third = true;
+					  /*hc_.trackGeneralClickEvent('video', 'thirdquartile');*/
+				  }
+
+			  }
+		</script>
+    </div>
+		
+</body>
+</html>
